@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<style>
+		.mid{
+			width: 40%;
+			background-color: #ffffff;
+			opacity: 0.6;
+		}
+		
+		h1{
+			font-weight:normal;
+			font-family:"Comic Sans MS", cursive, sans-serif;
+			opacity: 1;
+		}
+
+		th,td{
+			padding: 2%;
+			opacity: 1;
+		}
+
+		input{
+			border: 0;
+			width: 90%;
+			font-size: 100%;
+		}
+
+		td, input{
+			background: black;
+			color: white;
+		}
+
+		td{
+			height: 100%;
+		}
+
+		th{
+			font-size: 100%;
+			font-family:Verdana, Geneva, Tahoma, sans-serif;
+			font-weight:normal;
+			opacity: 1;
+		}
+
+		table{
+			text-align: center;
+			vertical-align: middle;
+			width: 80%;
+		}
+
+		body{
+			background-image: url('https://thumbs.dreamstime.com/b/iv-drip-background-blurred-hospital-ward-concept-serenity-58687572.jpg');
+			background-repeat: no-repeat;
+			background-size: cover;
+		}
+
+		@import url('//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+ 
+		.isa_warning {
+			color: #9F6000;
+			background-color: #FEEFB3;
+		}
+		.isa_error {
+			color: #D8000C;
+			background-color: #FFD2D2;
+		}
+		.isa_warning i, .isa_error i {
+			margin:3% 5%;
+			font-size:2em;
+			vertical-align:middle;
+		}
+		.error{
+			width: 60%;
+		}
+		.button {
+			display: inline-block;
+			border-radius: 5%;
+			background-color:lightseagreen;
+			border: none;
+			color: #FFFFFF;
+			text-align: center;
+			font-size: 120%;
+			padding: 1.5%;
+			width: 20%;
+			transition: all 0.5s;
+			cursor: pointer;
+			opacity: 1;
+		}
+
+		.button span {
+			cursor: pointer;
+			display: inline-block;
+			position: relative;
+			transition: 0.5s;
+		}
+
+		.button span:after {
+			content: '\00bb';
+			position: absolute;
+			opacity: 0;
+			top: 0;
+			right: -20px;
+			transition: 0.5s;
+		}
+
+		.button:hover span {
+			padding-right: 25px;
+		}
+
+		.button:hover span:after {
+			opacity: 1;
+			right: 0;
+		}
+
+		select{
+			width:75%;
+			padding: 2.5%;
+			background: black;
+			color: white;
+		}
+
+	</style>
+    <meta charset="UTF-8">
+    <title>Register</title>
+</head>
+<body><center>
+	<div class="mid">
+		<h1>Register here</h1>
+			<div class="error">
+				{% if eunm %}
+					<div class="isa_warning">
+						<i class="fa fa-warning"></i>
+						Username already exists. Try another one.
+					</div><br><br>
+				{% endif %}
+				{% if eem %}
+					<div class="isa_error">
+						<i class="fa fa-times-circle"></i>
+						Email already exists. Try <a href="/main/login">login</a>
+					</div><br><br>
+				{% endif %}
+			</div>
+			<form action="" method="POST">
+				{% csrf_token %}
+			<table class="form">
+				<tr>
+					<th>First Name</th>
+					<td>{{ form.fname }}</td>
+				</tr>
+				<tr>
+					<th>Last Name</th>
+					<td>{{ form.lname }}</td>
+				</tr>	
+				<tr>
+					<th>Email</th>
+					<td>{{ form.email }}</td>
+				</tr>
+				<tr>
+					<th>Username</th>
+					<td>{{ form.username }}</td>
+				</tr>
+				<tr>
+					<th>Password</th>
+					<td>{{ form.password }}</td>
+				</tr>
+				<tr>
+					<th>Confirm Password</th>
+					<td>{{ form.password2 }}</td>
+				</tr>
+				<tr>
+					<th>Category</th>
+					<td class="dpdwn">{{ form.user_type }}</td>
+				</tr>
+			</table><br>
+			<button type='submit' class="button"><span>Submit</span></button>
+			</form><br><br>
+	</div>
+</center></body>
+</html>

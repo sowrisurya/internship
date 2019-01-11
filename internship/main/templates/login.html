@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<style>
+		.mid{
+			margin-top: 15%;
+			width: 40%;
+			background-color: #ffffff;
+			opacity: 0.6;
+		}
+		
+		h1{
+			font-weight:normal;
+			font-family:"Comic Sans MS", cursive, sans-serif;
+			opacity: 1;
+		}
+
+		th,td{
+			padding: 2%;
+			opacity: 1;
+		}
+
+		input{
+			border: 0;
+			width: 90%;
+			font-size: 100%;
+		}
+
+		td, input{
+			background: black;
+			color: white;
+		}
+
+		th{
+			font-size: 100%;
+			font-family:Verdana, Geneva, Tahoma, sans-serif;
+			font-weight:normal;
+			opacity: 1;
+		}
+
+		table{
+			text-align: center;
+			vertical-align: middle;
+			width: 80%; 
+			border-collapse: separate;
+			border-spacing: 0 20%;
+		}
+
+		body{
+			background-image: url('https://thumbs.dreamstime.com/b/iv-drip-background-blurred-hospital-ward-concept-serenity-58687572.jpg');
+			background-repeat: no-repeat;
+			background-size: cover;
+		}
+
+		@import url('//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+ 
+		.isa_error {
+			color: #D8000C;
+			background-color: #FFD2D2;
+			padding: 3%;
+		}
+		.isa_error i {
+			margin:3% 5%;
+			vertical-align:middle;
+		}
+		.error{
+			width: 35%;
+			font-size: 110%;
+		}
+		.button {
+			display: inline-block;
+			border-radius: 5%;
+			background-color:lightseagreen;
+			border: none;
+			color: #FFFFFF;
+			text-align: center;
+			font-size: 120%;
+			padding: 1.5%;
+			width: 20%;
+			transition: all 0.5s;
+			cursor: pointer;
+			opacity: 1;
+		}
+
+		.button span {
+			cursor: pointer;
+			display: inline-block;
+			position: relative;
+			transition: 0.5s;
+		}
+
+		.button span:after {
+			content: '\00bb';
+			position: absolute;
+			opacity: 0;
+			top: 0;
+			right: -20px;
+			transition: 0.5s;
+		}
+
+		.button:hover span {
+			padding-right: 25px;
+		}
+
+		.button:hover span:after {
+			opacity: 1;
+			right: 0;
+		}
+
+		select{
+			width:75%;
+			padding: 2.5%;
+			background: black;
+			color: white;
+		}
+
+	</style>
+    <meta charset="UTF-8">
+    <title>Sign IN</title>
+</head>
+<body><center>
+	<div class="mid">
+		<h1>Signin here</h1>
+			<div class="error">
+				{% if error %}
+					<div class="isa_error">
+						<i class="fa fa-times-circle"></i>
+						{{ error }}
+					</div><br>
+				{% endif %}
+			</div>
+			<form action="" method="POST">
+				{% csrf_token %}
+			<table class="form">
+				<tr>
+					<th>Username</th>
+					<td>{{ form.username }}</td>
+				</tr>
+				<tr>
+					<th>Password</th>
+					<td>{{ form.password }}</td>
+				</tr>
+			</table><br>
+			<button type='submit' class="button"><span>Submit</span></button>
+			</form><br><br>
+	</div>
+</center></body>
+</html>
